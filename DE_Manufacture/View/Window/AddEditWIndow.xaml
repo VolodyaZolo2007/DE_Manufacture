@@ -46,7 +46,7 @@
         
         <CheckBox x:Name="IsManufactureCb" Grid.Row="10" Grid.Column="2"
                   Content="Производитель"/>
-
+<!--ff-->
         <Button x:Name="EditCompanyBtn" Grid.Row="12" Grid.Column="2"
                  Visibility="Hidden" Click="EditCompanyBtn_Click"/>
 
