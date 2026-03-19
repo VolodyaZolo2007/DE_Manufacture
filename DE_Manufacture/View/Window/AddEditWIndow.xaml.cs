@@ -85,6 +85,7 @@ namespace DE_Manufacture.View.Window
                 PhoneTb.Focus();
                 return false;
             }
+            //аа
             if (string.IsNullOrEmpty(AddresTb.Text))
             {
                 MessageBox.Show("Введите адрес компании");
