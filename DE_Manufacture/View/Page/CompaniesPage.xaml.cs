@@ -1,4 +1,5 @@
 ﻿using DE_Manufacture.Model;
+using DE_Manufacture.View.Window;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,14 +28,17 @@ namespace DE_Manufacture.View.Page
         {
             InitializeComponent();
 
-            _companies = App.context.Company.ToList();
-
-            CompaniewsLv.ItemsSource = _companies;
+           LoadData();
+         
         }
 
         private void AddCompanyBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            AddEditWIndow addEditWIndow = new AddEditWIndow();
+            if (addEditWIndow.ShowDialog() == true)
+            {
+                LoadData();
+            }
         }
 
         private void RemoveCompanyBtn_Click(object sender, RoutedEventArgs e)
@@ -44,7 +48,18 @@ namespace DE_Manufacture.View.Page
 
         private void EditCompanyBtn_Click(object sender, RoutedEventArgs e)
         {
+            Company selectedCompany = (Company)CompaniewsLv.SelectedItems;
+            if (selectedCompany != null)
+            {
+            AddEditWIndow addEditWIndow = new AddEditWIndow();
+                addEditWIndow.ShowDialog();
 
+            }
+        }
+        private void LoadData()
+        {
+            _companies = App.context.Company.ToList();
+            CompaniewsLv.ItemsSource= _companies;
         }
     }
 }
