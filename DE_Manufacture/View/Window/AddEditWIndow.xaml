@@ -53,6 +53,7 @@
                   Content="Производитель"
                   IsChecked="{Binding IsManufacture}"/>
 <!--ff-->
+        <!--аа-->
         <Button x:Name="EditCompanyBtn" Grid.Row="12" Grid.Column="2"
                  Visibility="Hidden" Click="EditCompanyBtn_Click"/>
 
