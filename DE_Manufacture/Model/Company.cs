@@ -26,13 +26,7 @@ namespace DE_Manufacture.Model
         public string Address { get; set; }
         public bool IsCustomer { get; set; }
         public bool IsManufacturer { get; set; }
-        public string CompanyType
-        {
-            get
-            {
-                return IsCustomer == true ? "Клиент" : "Производитель";
-            }
-        }
+    
         public virtual ICollection<Specification> Specification { get; set; }
     }
 }

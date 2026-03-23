@@ -8,37 +8,52 @@
       d:DesignHeight="784" d:DesignWidth="1560"
       Title="Компании">
 
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <Grid>
-            
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
-            <RowDefinition Height="20" />
-            <RowDefinition Height="1*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="1*" />
-        </Grid.ColumnDefinitions>
 
-        <Button Name="AddCompanyBtn" Grid.Column="0" Content="Добавить"
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="300" />
+            </Grid.ColumnDefinitions>
+
+            <Button Name="AddCompanyBtn" Grid.Column="0" Content="Добавить"
                     Click="AddCompanyBtn_Click"/>
-        <Button Name="EditCompanyBtn" 
+            <Button Name="EditCompanyBtn" 
                     Grid.Column="2"
                     Content="Редактировать"
                     Click="EditCompanyBtn_Click"/>
-        <Button Name="RemoveCompanyBtn" Grid.Column="4"
+            <Button Name="RemoveCompanyBtn" Grid.Column="4"
                     Content="Удалить"
                     Click="RemoveCompanyBtn_Click"/>
+
+            <TextBlock Grid.Column="8" Text="Поиск"/>
+            <TextBox Name="SearchTb" Grid.Column="10" TextChanged="SearchTb_TextChanged"/>
+
+            <TextBlock Grid.Column="12" Text="ФИльтр"/>
+            <ComboBox Name="FilterCmb" Grid.Column="14" SelectionChanged="FilterCmb_SelectionChanged"/>
         </Grid>
         <ListView Name="CompaniewsLv" Grid.Row="2">
             <ListView.View>

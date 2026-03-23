@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище C" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище C" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Insurance" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
@@ -21,7 +21,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ItemId" Type="int" Nullable="false" />
           <Property Name="IsProduct" Type="bit" Nullable="false" />
           <Property Name="Code" Type="nvarchar" MaxLength="16" Nullable="false" />
@@ -30,7 +30,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Price" Type="decimal" Precision="8" Scale="0" Nullable="false" />
           <Property Name="UnitId" Type="int" Nullable="false" />
@@ -39,7 +39,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Number" Type="int" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="TotalPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
@@ -48,7 +48,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OrderId" Type="int" Nullable="false" />
           <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="Amount" Type="int" Nullable="false" />
@@ -58,7 +58,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Price" Type="decimal" Precision="8" Scale="2" Nullable="false" />
           <Property Name="UnitId" Type="int" Nullable="false" />
@@ -67,7 +67,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="ManufacturerId" Type="int" Nullable="false" />
           <Property Name="Amount" Type="decimal" Precision="8" Scale="2" Nullable="false" />
@@ -76,7 +76,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SpecificationId" Type="int" Nullable="false" />
           <Property Name="MaterialId" Type="int" Nullable="false" />
         </EntityType>
@@ -84,7 +84,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <Association Name="FK_Manufacturer_Material">
@@ -274,118 +274,172 @@
             <End Role="SpecificationMaterial" EntitySet="SpecificationMaterial" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="C" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ManufactureIDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Company" EntityType="C.Company" />
+          <EntitySet Name="Manufacturer" EntityType="C.Manufacturer" />
+          <EntitySet Name="Material" EntityType="C.Material" />
+          <EntitySet Name="Order" EntityType="C.Order" />
+          <EntitySet Name="OrderProduct" EntityType="C.OrderProduct" />
+          <EntitySet Name="Product" EntityType="C.Product" />
+          <EntitySet Name="Specification" EntityType="C.Specification" />
+          <EntitySet Name="SpecificationMaterial" EntityType="C.SpecificationMaterial" />
+          <EntitySet Name="Unit" EntityType="C.Unit" />
+          <AssociationSet Name="FK_Specification_Company" Association="C.FK_Specification_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Specification" EntitySet="Specification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manufacturer_Material" Association="C.FK_Manufacturer_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="Manufacturer" EntitySet="Manufacturer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manufacturer_Product" Association="C.FK_Manufacturer_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Manufacturer" EntitySet="Manufacturer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Specification_Manufacturer" Association="C.FK_Specification_Manufacturer">
+            <End Role="Manufacturer" EntitySet="Manufacturer" />
+            <End Role="Specification" EntitySet="Specification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Material_Unit" Association="C.FK_Material_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Material" EntitySet="Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecificationMaterial_Material" Association="C.FK_SpecificationMaterial_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="SpecificationMaterial" EntitySet="SpecificationMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProduct_Order" Association="C.FK_OrderProduct_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderProduct" EntitySet="OrderProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProduct_Product" Association="C.FK_OrderProduct_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderProduct" EntitySet="OrderProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Unit" Association="C.FK_Product_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Specification_Product" Association="C.FK_Specification_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Specification" EntitySet="Specification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecificationMaterial_Specification" Association="C.FK_SpecificationMaterial_Specification">
+            <End Role="Specification" EntitySet="Specification" />
+            <End Role="SpecificationMaterial" EntitySet="SpecificationMaterial" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Insurance" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Insurance" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
           <Property Name="IsCustomer" Type="Boolean" Nullable="false" />
           <Property Name="IsManufacturer" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Specification" Relationship="Self.FK_Specification_Company" FromRole="Company" ToRole="Specification" />
+          <NavigationProperty Name="Specification" Relationship="C.FK_Specification_Company" FromRole="Company" ToRole="Specification" />
         </EntityType>
         <EntityType Name="Manufacturer">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ItemId" Type="Int32" Nullable="false" />
           <Property Name="IsProduct" Type="Boolean" Nullable="false" />
-          <Property Name="Code" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Material" Relationship="Self.FK_Manufacturer_Material" FromRole="Manufacturer" ToRole="Material" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Manufacturer_Product" FromRole="Manufacturer" ToRole="Product" />
-          <NavigationProperty Name="Specification" Relationship="Self.FK_Specification_Manufacturer" FromRole="Manufacturer" ToRole="Specification" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Material" Relationship="C.FK_Manufacturer_Material" FromRole="Manufacturer" ToRole="Material" />
+          <NavigationProperty Name="Product" Relationship="C.FK_Manufacturer_Product" FromRole="Manufacturer" ToRole="Product" />
+          <NavigationProperty Name="Specification" Relationship="C.FK_Specification_Manufacturer" FromRole="Manufacturer" ToRole="Specification" />
         </EntityType>
         <EntityType Name="Material">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Price" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="8" Scale="0" />
           <Property Name="UnitId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Manufacturer_Material" FromRole="Material" ToRole="Manufacturer" />
-          <NavigationProperty Name="Unit" Relationship="Self.FK_Material_Unit" FromRole="Material" ToRole="Unit" />
-          <NavigationProperty Name="SpecificationMaterial" Relationship="Self.FK_SpecificationMaterial_Material" FromRole="Material" ToRole="SpecificationMaterial" />
+          <NavigationProperty Name="Manufacturer" Relationship="C.FK_Manufacturer_Material" FromRole="Material" ToRole="Manufacturer" />
+          <NavigationProperty Name="Unit" Relationship="C.FK_Material_Unit" FromRole="Material" ToRole="Unit" />
+          <NavigationProperty Name="SpecificationMaterial" Relationship="C.FK_SpecificationMaterial_Material" FromRole="Material" ToRole="SpecificationMaterial" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Number" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="TotalPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <NavigationProperty Name="OrderProduct" Relationship="Self.FK_OrderProduct_Order" FromRole="Order" ToRole="OrderProduct" />
+          <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <NavigationProperty Name="OrderProduct" Relationship="C.FK_OrderProduct_Order" FromRole="Order" ToRole="OrderProduct" />
         </EntityType>
         <EntityType Name="OrderProduct">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderId" Type="Int32" Nullable="false" />
           <Property Name="ProductId" Type="Int32" Nullable="false" />
           <Property Name="Amount" Type="Int32" Nullable="false" />
-          <Property Name="TotalPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_OrderProduct_Order" FromRole="OrderProduct" ToRole="Order" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_OrderProduct_Product" FromRole="OrderProduct" ToRole="Product" />
+          <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <NavigationProperty Name="Order" Relationship="C.FK_OrderProduct_Order" FromRole="OrderProduct" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="C.FK_OrderProduct_Product" FromRole="OrderProduct" ToRole="Product" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Price" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
           <Property Name="UnitId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Manufacturer_Product" FromRole="Product" ToRole="Manufacturer" />
-          <NavigationProperty Name="OrderProduct" Relationship="Self.FK_OrderProduct_Product" FromRole="Product" ToRole="OrderProduct" />
-          <NavigationProperty Name="Unit" Relationship="Self.FK_Product_Unit" FromRole="Product" ToRole="Unit" />
-          <NavigationProperty Name="Specification" Relationship="Self.FK_Specification_Product" FromRole="Product" ToRole="Specification" />
+          <NavigationProperty Name="Manufacturer" Relationship="C.FK_Manufacturer_Product" FromRole="Product" ToRole="Manufacturer" />
+          <NavigationProperty Name="OrderProduct" Relationship="C.FK_OrderProduct_Product" FromRole="Product" ToRole="OrderProduct" />
+          <NavigationProperty Name="Unit" Relationship="C.FK_Product_Unit" FromRole="Product" ToRole="Unit" />
+          <NavigationProperty Name="Specification" Relationship="C.FK_Specification_Product" FromRole="Product" ToRole="Specification" />
         </EntityType>
         <EntityType Name="Specification">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductId" Type="Int32" Nullable="false" />
           <Property Name="ManufacturerId" Type="Int32" Nullable="false" />
-          <Property Name="Amount" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
-          <NavigationProperty Name="Company" Relationship="Self.FK_Specification_Company" FromRole="Specification" ToRole="Company" />
-          <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Specification_Manufacturer" FromRole="Specification" ToRole="Manufacturer" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Specification_Product" FromRole="Specification" ToRole="Product" />
-          <NavigationProperty Name="SpecificationMaterial" Relationship="Self.FK_SpecificationMaterial_Specification" FromRole="Specification" ToRole="SpecificationMaterial" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <NavigationProperty Name="Company" Relationship="C.FK_Specification_Company" FromRole="Specification" ToRole="Company" />
+          <NavigationProperty Name="Manufacturer" Relationship="C.FK_Specification_Manufacturer" FromRole="Specification" ToRole="Manufacturer" />
+          <NavigationProperty Name="Product" Relationship="C.FK_Specification_Product" FromRole="Specification" ToRole="Product" />
+          <NavigationProperty Name="SpecificationMaterial" Relationship="C.FK_SpecificationMaterial_Specification" FromRole="Specification" ToRole="SpecificationMaterial" />
         </EntityType>
         <EntityType Name="SpecificationMaterial">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SpecificationId" Type="Int32" Nullable="false" />
           <Property Name="MaterialId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Material" Relationship="Self.FK_SpecificationMaterial_Material" FromRole="SpecificationMaterial" ToRole="Material" />
-          <NavigationProperty Name="Specification" Relationship="Self.FK_SpecificationMaterial_Specification" FromRole="SpecificationMaterial" ToRole="Specification" />
+          <NavigationProperty Name="Material" Relationship="C.FK_SpecificationMaterial_Material" FromRole="SpecificationMaterial" ToRole="Material" />
+          <NavigationProperty Name="Specification" Relationship="C.FK_SpecificationMaterial_Specification" FromRole="SpecificationMaterial" ToRole="Specification" />
         </EntityType>
         <EntityType Name="Unit">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Material" Relationship="Self.FK_Material_Unit" FromRole="Unit" ToRole="Material" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Unit" FromRole="Unit" ToRole="Product" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Material" Relationship="C.FK_Material_Unit" FromRole="Unit" ToRole="Material" />
+          <NavigationProperty Name="Product" Relationship="C.FK_Product_Unit" FromRole="Unit" ToRole="Product" />
         </EntityType>
         <Association Name="FK_Specification_Company">
-          <End Role="Company" Type="Self.Company" Multiplicity="1" />
-          <End Role="Specification" Type="Self.Specification" Multiplicity="*" />
+          <End Type="C.Company" Role="Company" Multiplicity="1" />
+          <End Type="C.Specification" Role="Specification" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Company">
               <PropertyRef Name="Id" />
@@ -396,8 +450,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Manufacturer_Material">
-          <End Role="Material" Type="Self.Material" Multiplicity="1" />
-          <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="*" />
+          <End Type="C.Material" Role="Material" Multiplicity="1" />
+          <End Type="C.Manufacturer" Role="Manufacturer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Material">
               <PropertyRef Name="Id" />
@@ -408,8 +462,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Manufacturer_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="*" />
+          <End Type="C.Product" Role="Product" Multiplicity="1" />
+          <End Type="C.Manufacturer" Role="Manufacturer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="id" />
@@ -420,8 +474,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Specification_Manufacturer">
-          <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
-          <End Role="Specification" Type="Self.Specification" Multiplicity="*" />
+          <End Type="C.Manufacturer" Role="Manufacturer" Multiplicity="1" />
+          <End Type="C.Specification" Role="Specification" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Manufacturer">
               <PropertyRef Name="Id" />
@@ -432,8 +486,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Material_Unit">
-          <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
-          <End Role="Material" Type="Self.Material" Multiplicity="*" />
+          <End Type="C.Unit" Role="Unit" Multiplicity="1" />
+          <End Type="C.Material" Role="Material" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Unit">
               <PropertyRef Name="Id" />
@@ -444,8 +498,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SpecificationMaterial_Material">
-          <End Role="Material" Type="Self.Material" Multiplicity="1" />
-          <End Role="SpecificationMaterial" Type="Self.SpecificationMaterial" Multiplicity="*" />
+          <End Type="C.Material" Role="Material" Multiplicity="1" />
+          <End Type="C.SpecificationMaterial" Role="SpecificationMaterial" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Material">
               <PropertyRef Name="Id" />
@@ -456,8 +510,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderProduct_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
-          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+          <End Type="C.Order" Role="Order" Multiplicity="1" />
+          <End Type="C.OrderProduct" Role="OrderProduct" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
               <PropertyRef Name="Id" />
@@ -468,8 +522,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderProduct_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+          <End Type="C.Product" Role="Product" Multiplicity="1" />
+          <End Type="C.OrderProduct" Role="OrderProduct" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="id" />
@@ -480,8 +534,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_Unit">
-          <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <End Type="C.Unit" Role="Unit" Multiplicity="1" />
+          <End Type="C.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Unit">
               <PropertyRef Name="Id" />
@@ -492,8 +546,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Specification_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="Specification" Type="Self.Specification" Multiplicity="*" />
+          <End Type="C.Product" Role="Product" Multiplicity="1" />
+          <End Type="C.Specification" Role="Specification" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="id" />
@@ -504,8 +558,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SpecificationMaterial_Specification">
-          <End Role="Specification" Type="Self.Specification" Multiplicity="1" />
-          <End Role="SpecificationMaterial" Type="Self.SpecificationMaterial" Multiplicity="*" />
+          <End Type="C.Specification" Role="Specification" Multiplicity="1" />
+          <End Type="C.SpecificationMaterial" Role="SpecificationMaterial" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Specification">
               <PropertyRef Name="Id" />
@@ -515,61 +569,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ManufactureIDEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Company" EntityType="Self.Company" />
-          <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" />
-          <EntitySet Name="Material" EntityType="Self.Material" />
-          <EntitySet Name="Order" EntityType="Self.Order" />
-          <EntitySet Name="OrderProduct" EntityType="Self.OrderProduct" />
-          <EntitySet Name="Product" EntityType="Self.Product" />
-          <EntitySet Name="Specification" EntityType="Self.Specification" />
-          <EntitySet Name="SpecificationMaterial" EntityType="Self.SpecificationMaterial" />
-          <EntitySet Name="Unit" EntityType="Self.Unit" />
-          <AssociationSet Name="FK_Specification_Company" Association="Self.FK_Specification_Company">
-            <End Role="Company" EntitySet="Company" />
-            <End Role="Specification" EntitySet="Specification" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Manufacturer_Material" Association="Self.FK_Manufacturer_Material">
-            <End Role="Material" EntitySet="Material" />
-            <End Role="Manufacturer" EntitySet="Manufacturer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Manufacturer_Product" Association="Self.FK_Manufacturer_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="Manufacturer" EntitySet="Manufacturer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Specification_Manufacturer" Association="Self.FK_Specification_Manufacturer">
-            <End Role="Manufacturer" EntitySet="Manufacturer" />
-            <End Role="Specification" EntitySet="Specification" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Material_Unit" Association="Self.FK_Material_Unit">
-            <End Role="Unit" EntitySet="Unit" />
-            <End Role="Material" EntitySet="Material" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SpecificationMaterial_Material" Association="Self.FK_SpecificationMaterial_Material">
-            <End Role="Material" EntitySet="Material" />
-            <End Role="SpecificationMaterial" EntitySet="SpecificationMaterial" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OrderProduct_Order" Association="Self.FK_OrderProduct_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="OrderProduct" EntitySet="OrderProduct" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OrderProduct_Product" Association="Self.FK_OrderProduct_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="OrderProduct" EntitySet="OrderProduct" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Product_Unit" Association="Self.FK_Product_Unit">
-            <End Role="Unit" EntitySet="Unit" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Specification_Product" Association="Self.FK_Specification_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="Specification" EntitySet="Specification" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SpecificationMaterial_Specification" Association="Self.FK_SpecificationMaterial_Specification">
-            <End Role="Specification" EntitySet="Specification" />
-            <End Role="SpecificationMaterial" EntitySet="SpecificationMaterial" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -579,91 +578,91 @@
           <EntitySetMapping Name="Company">
             <EntityTypeMapping TypeName="C.Company">
               <MappingFragment StoreEntitySet="Company">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Insurance" ColumnName="Insurance" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="IsCustomer" ColumnName="IsCustomer" />
                 <ScalarProperty Name="IsManufacturer" ColumnName="IsManufacturer" />
+                <ScalarProperty Name="IsCustomer" ColumnName="IsCustomer" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Insurance" ColumnName="Insurance" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Manufacturer">
             <EntityTypeMapping TypeName="C.Manufacturer">
               <MappingFragment StoreEntitySet="Manufacturer">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
-                <ScalarProperty Name="IsProduct" ColumnName="IsProduct" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="IsProduct" ColumnName="IsProduct" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Material">
             <EntityTypeMapping TypeName="C.Material">
               <MappingFragment StoreEntitySet="Material">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="C.Order">
               <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Number" ColumnName="Number" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderProduct">
             <EntityTypeMapping TypeName="C.OrderProduct">
               <MappingFragment StoreEntitySet="OrderProduct">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="C.Product">
               <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Specification">
             <EntityTypeMapping TypeName="C.Specification">
               <MappingFragment StoreEntitySet="Specification">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SpecificationMaterial">
             <EntityTypeMapping TypeName="C.SpecificationMaterial">
               <MappingFragment StoreEntitySet="SpecificationMaterial">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="SpecificationId" ColumnName="SpecificationId" />
                 <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+                <ScalarProperty Name="SpecificationId" ColumnName="SpecificationId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Unit">
             <EntityTypeMapping TypeName="C.Unit">
               <MappingFragment StoreEntitySet="Unit">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

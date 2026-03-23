@@ -1,6 +1,7 @@
 ﻿using DE_Manufacture.Model;
 using DE_Manufacture.View.Window;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,7 +44,24 @@ namespace DE_Manufacture.View.Page
 
         private void RemoveCompanyBtn_Click(object sender, RoutedEventArgs e)
         {
+            Company selectedCompany = (Company)CompaniewsLv.SelectedItem;
 
+            try
+            {
+
+            if (selectedCompany != null)
+            {
+                App.context.Company.Remove(selectedCompany);
+                App.context.SaveChanges();
+
+                MessageBox.Show("Компания успешно удалена");
+                    LoadData();
+            }
+            }
+            catch
+                {
+                MessageBox.Show("Невозможно удалить компанию");
+            }
         }
 
         private void EditCompanyBtn_Click(object sender, RoutedEventArgs e)
@@ -51,15 +69,43 @@ namespace DE_Manufacture.View.Page
             Company selectedCompany = (Company)CompaniewsLv.SelectedItems;
             if (selectedCompany != null)
             {
-            AddEditWIndow addEditWIndow = new AddEditWIndow();
-                addEditWIndow.ShowDialog();
 
+                    AddEditWIndow addEditWIndow = new AddEditWIndow(selectedCompany);
+                addEditWIndow.ShowDialog();
+                
+                
+            }
+            else
+            {
+                MessageBox.Show("Сначала выберите компанию");
             }
         }
-        private void LoadData()
+        public void LoadData()
         {
             _companies = App.context.Company.ToList();
             CompaniewsLv.ItemsSource= _companies;
+        }
+
+        private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchString = SearchTb.Text.ToLower();
+            if (string.IsNullOrWhiteSpace(searchString))
+            {
+                LoadData();
+                return;
+            }
+            else
+            {
+                var filterList = _companies.Where(company => company.Name.ToLower().Contains(searchString) ||
+                company.Insurance.ToLower().Contains(searchString)||
+                company.Phone.ToLower().Contains(searchString)||
+                company.Address.ToLower().Contains(searchString));
+            }
+        }
+
+        private void FilterCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

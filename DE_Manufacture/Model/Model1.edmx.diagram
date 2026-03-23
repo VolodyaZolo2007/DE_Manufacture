@@ -5,26 +5,26 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="0e389506e93d4f34a4224b569d22b99f" Name="Diagram1">
-        <EntityTypeShape EntityType="C.Company" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="C.Manufacturer" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="C.Material" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="C.Order" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="C.OrderProduct" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="C.Product" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="C.Specification" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="C.SpecificationMaterial" Width="1.5" PointX="9.75" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="C.Unit" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
-        <AssociationConnector Association="C.FK_Specification_Company" ManuallyRouted="false" />
-        <AssociationConnector Association="C.FK_Manufacturer_Material" ManuallyRouted="false" />
-        <AssociationConnector Association="C.FK_Manufacturer_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="C.FK_Specification_Manufacturer" ManuallyRouted="false" />
-        <AssociationConnector Association="C.FK_Material_Unit" ManuallyRouted="false" />
-        <AssociationConnector Association="C.FK_SpecificationMaterial_Material" ManuallyRouted="false" />
-        <AssociationConnector Association="C.FK_OrderProduct_Order" ManuallyRouted="false" />
-        <AssociationConnector Association="C.FK_OrderProduct_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="C.FK_Product_Unit" ManuallyRouted="false" />
-        <AssociationConnector Association="C.FK_Specification_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="C.FK_SpecificationMaterial_Specification" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="C.Company" Width="1.5" PointX="5.25" PointY="9.625" />
+        <EntityTypeShape EntityType="C.Manufacturer" Width="1.5" PointX="5.25" PointY="2.875" />
+        <EntityTypeShape EntityType="C.Material" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="C.Order" Width="1.5" PointX="3" PointY="8.625" />
+        <EntityTypeShape EntityType="C.OrderProduct" Width="1.5" PointX="5.25" PointY="6.375" />
+        <EntityTypeShape EntityType="C.Product" Width="1.5" PointX="3" PointY="4.375" />
+        <EntityTypeShape EntityType="C.Specification" Width="1.5" PointX="7.5" PointY="3.625" />
+        <EntityTypeShape EntityType="C.SpecificationMaterial" Width="1.5" PointX="9.75" PointY="2.75" />
+        <EntityTypeShape EntityType="C.Unit" Width="1.5" PointX="0.75" PointY="3.125" />
+        <AssociationConnector Association="C.FK_Specification_Company" />
+        <AssociationConnector Association="C.FK_Manufacturer_Material" />
+        <AssociationConnector Association="C.FK_Manufacturer_Product" />
+        <AssociationConnector Association="C.FK_Specification_Manufacturer" />
+        <AssociationConnector Association="C.FK_Material_Unit" />
+        <AssociationConnector Association="C.FK_SpecificationMaterial_Material" />
+        <AssociationConnector Association="C.FK_OrderProduct_Order" />
+        <AssociationConnector Association="C.FK_OrderProduct_Product" />
+        <AssociationConnector Association="C.FK_Product_Unit" />
+        <AssociationConnector Association="C.FK_Specification_Product" />
+        <AssociationConnector Association="C.FK_SpecificationMaterial_Specification" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

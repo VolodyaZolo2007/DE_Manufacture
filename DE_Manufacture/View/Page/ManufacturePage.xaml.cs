@@ -24,5 +24,19 @@ namespace DE_Manufacture.View.Page
         {
             InitializeComponent();
         }
+
+        private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchString = SearchTb.Text;
+            if (string.IsNullOrWhiteSpace(searchString))
+            {
+                return;
+            }
+        }
+
+        private void FilterCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

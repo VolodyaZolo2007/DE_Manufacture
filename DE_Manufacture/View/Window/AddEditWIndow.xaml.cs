@@ -28,6 +28,8 @@ namespace DE_Manufacture.View.Window
             Title = "Добавление компание";
             AddCompanyBtn.Visibility = Visibility.Visible;
             EditCompanyBtn.Visibility = Visibility.Collapsed;
+
+
         }
         //конструктор для режима "Редактировать пользователя"
         public AddEditWIndow(Company selectedCompany)
@@ -44,7 +46,11 @@ namespace DE_Manufacture.View.Window
 
         private void EditCompanyBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            App.context.SaveChanges();
+
+            MessageBox.Show("Данные компании успешно обновлениы");
+
+            DialogResult = true;
         }
 
         private void AddCompanyBtn_Click(object sender, RoutedEventArgs e)
@@ -56,12 +62,16 @@ namespace DE_Manufacture.View.Window
                     Name = NameTB.Text,
                     Insurance = InsuranceTb.Text,
                     Address = AddresTb.Text,
+                    Phone = AddresTb.Text,
                     IsCustomer = IsCustomerCb.IsChecked.Value,
                     IsManufacturer = IsManufactureCb.IsChecked.Value
                 };
 
                 App.context.Company.Add(newCompany);
                 App.context.SaveChanges();
+            MessageBox.Show("КОмпания успешно добавлена");
+
+                DialogResult = true;
 
             }
         }
