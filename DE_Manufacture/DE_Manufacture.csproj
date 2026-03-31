@@ -68,11 +68,14 @@
     <Compile Include="View\Page\ManufacturePage.xaml.cs">
       <DependentUpon>ManufacturePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Page\OrderPage.xaml.cs">
-      <DependentUpon>OrderPage.xaml</DependentUpon>
+    <Compile Include="View\Page\OrderPaGe.xaml.cs">
+      <DependentUpon>OrderPaGe.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Page\SpecifucationPage.xaml.cs">
-      <DependentUpon>SpecifucationPage.xaml</DependentUpon>
+    <Compile Include="View\Window\AddEditManufacturerWindow.xaml.cs">
+      <DependentUpon>AddEditManufacturerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\AddEditOrderWindow.xaml.cs">
+      <DependentUpon>AddEditOrderWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Window\AddEditWIndow.xaml.cs">
       <DependentUpon>AddEditWIndow.xaml</DependentUpon>
@@ -92,11 +95,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Page\OrderPage.xaml">
+    <Page Include="View\Page\OrderPaGe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Page\SpecifucationPage.xaml">
+    <Page Include="View\Window\AddEditManufacturerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Window\AddEditOrderWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

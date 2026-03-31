@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Добавить/редактировать данные компании" SizeToContent="WidthAndHeight"
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
@@ -51,11 +52,11 @@
         
         <CheckBox x:Name="IsManufactureCb" Grid.Row="10" Grid.Column="2"
                   Content="Производитель"
-                  IsChecked="{Binding IsManufacture}"/>
+                  IsChecked="{Binding IsManufacturer}"/>
 <!--ff-->
         <!--аа-->
         <Button x:Name="EditCompanyBtn" Grid.Row="12" Grid.Column="2"
-                 Visibility="Hidden" Click="EditCompanyBtn_Click"/>
+                 Visibility="Hidden" Click="EditCompanyBtn_Click" Content="Редактировать"/>
 
         <Button x:Name="AddCompanyBtn" Grid.Row="12" Grid.Column="2"
                  Click="AddCompanyBtn_Click" Content="Добавить компанию"/>

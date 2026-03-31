@@ -1,0 +1,42 @@
+﻿<Window x:Class="DE_Manufacture.View.Window.AddEditOrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DE_Manufacture.View.Window"
+        mc:Ignorable="d"
+            Title="AddEditManufacturerWindow" SizeToContent="WidthAndHeight"
+    ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="300" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Номер заказа:"/>
+        <TextBox x:Name="NumberTb" Grid.Row="0" Grid.Column="2" Text="{Binding Number}"/>
+
+        <TextBlock Grid.Row="2" Text="Дата заказа:" />
+        <DatePicker  x:Name="DateOrderDp" Grid.Row="2" Grid.Column="2" SelectedDate="{Binding Date}"/>
+
+        <TextBlock Grid.Row="4" Text="Цена:" />
+        <TextBox x:Name="PriceTb" Grid.Row="4" Grid.Column="2" Text="{Binding TotalPrice}"/>
+        <!--ff-->
+        <!--аа-->
+        <Button x:Name="EditOrderBtn" Grid.Row="6" Grid.Column="2"
+             Visibility="Hidden" Content="Редактировать" Click="EditOrderBtn_Click"/>
+
+        <Button x:Name="AddOrderBtn" Grid.Row="6" Grid.Column="2"
+              Content="Добавить компанию" Click="AddOrderBtn_Click"/>
+    </Grid>
+</Window>

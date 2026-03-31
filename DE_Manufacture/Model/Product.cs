@@ -16,7 +16,6 @@ namespace DE_Manufacture.Model
     {
         public Product()
         {
-            this.Manufacturer = new HashSet<Manufacturer>();
             this.OrderProduct = new HashSet<OrderProduct>();
             this.Specification = new HashSet<Specification>();
         }
@@ -26,7 +25,6 @@ namespace DE_Manufacture.Model
         public decimal Price { get; set; }
         public int UnitId { get; set; }
     
-        public virtual ICollection<Manufacturer> Manufacturer { get; set; }
         public virtual ICollection<OrderProduct> OrderProduct { get; set; }
         public virtual Unit Unit { get; set; }
         public virtual ICollection<Specification> Specification { get; set; }

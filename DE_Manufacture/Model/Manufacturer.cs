@@ -23,9 +23,8 @@ namespace DE_Manufacture.Model
         public int ItemId { get; set; }
         public bool IsProduct { get; set; }
         public string Code { get; set; }
-    
+        public string productType => IsProduct ? "Да" : "Нет";
         public virtual Material Material { get; set; }
-        public virtual Product Product { get; set; }
         public virtual ICollection<Specification> Specification { get; set; }
     }
 }

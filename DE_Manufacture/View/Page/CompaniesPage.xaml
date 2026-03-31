@@ -67,7 +67,7 @@
                     <GridViewColumn Header="Адрес"
                                     DisplayMemberBinding="{Binding Address}"/>
                     <GridViewColumn Header="Тип компании"
-                                    DisplayMemberBinding="{Binding CompanyType}"/>
+                                    DisplayMemberBinding="{Binding companyType}"/>
                 </GridView>
             </ListView.View>
         </ListView>

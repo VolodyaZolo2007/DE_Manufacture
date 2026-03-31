@@ -5,11 +5,66 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DE_Manufacture.View.Page"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="1560"
       Title="ManufacturePage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="300" />
+            </Grid.ColumnDefinitions>
+
+            <Button Name="AddManufactureBtn" Grid.Column="0" Content="Добавить"
+                    Click="AddManufactureBtn_Click"/>
+            <Button Name="EditManufacture" 
+                    Grid.Column="2"
+                    Content="Редактировать"
+                    Click="EditManufacture_Click"/>
+            <Button Name="RemoveManufacture" Grid.Column="4"
+                    Content="Удалить"
+                    Click="RemoveManufacture_Click"/>
+
+            <TextBlock Grid.Column="8" Text="Поиск"/>
+            <TextBox Name="SearchTb" Grid.Column="10" TextChanged="SearchTb_TextChanged"/>
+
+            <TextBlock Grid.Column="12" Text="ФИльтр"/>
+            <ComboBox Name="FilterCmb" Grid.Column="14" SelectionChanged="FilterCmb_SelectionChanged"/>
+        </Grid>
+        <ListView Name="ManufacturerLv" Grid.Row="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Название материала"
+                                    DisplayMemberBinding="{Binding Material.Name}"/>
+                    <GridViewColumn Header="Продукт"
+                                    DisplayMemberBinding="{Binding productType}"/>
+                    <GridViewColumn Header="Код материала"
+                                    DisplayMemberBinding="{Binding Code}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
-        
 </Page>

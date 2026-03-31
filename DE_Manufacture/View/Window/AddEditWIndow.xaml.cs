@@ -28,8 +28,6 @@ namespace DE_Manufacture.View.Window
             Title = "Добавление компание";
             AddCompanyBtn.Visibility = Visibility.Visible;
             EditCompanyBtn.Visibility = Visibility.Collapsed;
-
-
         }
         //конструктор для режима "Редактировать пользователя"
         public AddEditWIndow(Company selectedCompany)

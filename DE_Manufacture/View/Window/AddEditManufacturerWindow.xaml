@@ -1,0 +1,45 @@
+﻿<Window x:Class="DE_Manufacture.View.Window.AddEditManufacturerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DE_Manufacture.View.Window"
+        mc:Ignorable="d"
+        Title="AddEditManufacturerWindow" SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="300" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Название материала:"/>
+        <ComboBox x:Name="NameCmb" Grid.Row="0" Grid.Column="2"
+                 SelectedValue="{Binding ItemId}"/>
+
+        <TextBlock Grid.Row="2" Text="Код материала:" />
+        <TextBox x:Name="CodeTb" Grid.Row="2" Grid.Column="2"
+                  Text="{Binding Code}"/>
+
+        <CheckBox x:Name="IsProductCb" Grid.Row="4" Grid.Column="2"
+                  Content="Продукт"
+                  IsChecked="{Binding IsProduct}"/>
+        <!--ff-->
+        <!--аа-->
+        <Button x:Name="EditManufactureBtn" Grid.Row="6" Grid.Column="2"
+                 Visibility="Hidden" Click="EditManufactureBtn_Click" Content="Редактировать"/>
+
+        <Button x:Name="AddManufactureBtn" Grid.Row="6" Grid.Column="2"
+                 Click="AddManufactureBtn_Click" Content="Добавить компанию"/>
+    </Grid>
+</Window>

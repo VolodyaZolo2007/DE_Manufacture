@@ -87,24 +87,12 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Manufacturer_Material">
+        <Association Name="FK_Manufacturer_Material1">
           <End Role="Material" Type="Self.Material" Multiplicity="1" />
           <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Material">
               <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Manufacturer">
-              <PropertyRef Name="ItemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Manufacturer_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Manufacturer">
               <PropertyRef Name="ItemId" />
@@ -229,12 +217,8 @@
           <EntitySet Name="Specification" EntityType="Self.Specification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SpecificationMaterial" EntityType="Self.SpecificationMaterial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Manufacturer_Material" Association="Self.FK_Manufacturer_Material">
+          <AssociationSet Name="FK_Manufacturer_Material1" Association="Self.FK_Manufacturer_Material1">
             <End Role="Material" EntitySet="Material" />
-            <End Role="Manufacturer" EntitySet="Manufacturer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Manufacturer_Product" Association="Self.FK_Manufacturer_Product">
-            <End Role="Product" EntitySet="Product" />
             <End Role="Manufacturer" EntitySet="Manufacturer" />
           </AssociationSet>
           <AssociationSet Name="FK_Material_Unit" Association="Self.FK_Material_Unit">
@@ -292,12 +276,8 @@
             <End Role="Company" EntitySet="Company" />
             <End Role="Specification" EntitySet="Specification" />
           </AssociationSet>
-          <AssociationSet Name="FK_Manufacturer_Material" Association="C.FK_Manufacturer_Material">
+          <AssociationSet Name="FK_Manufacturer_Material1" Association="C.FK_Manufacturer_Material1">
             <End Role="Material" EntitySet="Material" />
-            <End Role="Manufacturer" EntitySet="Manufacturer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Manufacturer_Product" Association="C.FK_Manufacturer_Product">
-            <End Role="Product" EntitySet="Product" />
             <End Role="Manufacturer" EntitySet="Manufacturer" />
           </AssociationSet>
           <AssociationSet Name="FK_Specification_Manufacturer" Association="C.FK_Specification_Manufacturer">
@@ -354,8 +334,7 @@
           <Property Name="ItemId" Type="Int32" Nullable="false" />
           <Property Name="IsProduct" Type="Boolean" Nullable="false" />
           <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Material" Relationship="C.FK_Manufacturer_Material" FromRole="Manufacturer" ToRole="Material" />
-          <NavigationProperty Name="Product" Relationship="C.FK_Manufacturer_Product" FromRole="Manufacturer" ToRole="Product" />
+          <NavigationProperty Name="Material" Relationship="C.FK_Manufacturer_Material1" FromRole="Manufacturer" ToRole="Material" />
           <NavigationProperty Name="Specification" Relationship="C.FK_Specification_Manufacturer" FromRole="Manufacturer" ToRole="Specification" />
         </EntityType>
         <EntityType Name="Material">
@@ -366,7 +345,7 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Nullable="false" Precision="8" Scale="0" />
           <Property Name="UnitId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Manufacturer" Relationship="C.FK_Manufacturer_Material" FromRole="Material" ToRole="Manufacturer" />
+          <NavigationProperty Name="Manufacturer" Relationship="C.FK_Manufacturer_Material1" FromRole="Material" ToRole="Manufacturer" />
           <NavigationProperty Name="Unit" Relationship="C.FK_Material_Unit" FromRole="Material" ToRole="Unit" />
           <NavigationProperty Name="SpecificationMaterial" Relationship="C.FK_SpecificationMaterial_Material" FromRole="Material" ToRole="SpecificationMaterial" />
         </EntityType>
@@ -400,7 +379,6 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
           <Property Name="UnitId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Manufacturer" Relationship="C.FK_Manufacturer_Product" FromRole="Product" ToRole="Manufacturer" />
           <NavigationProperty Name="OrderProduct" Relationship="C.FK_OrderProduct_Product" FromRole="Product" ToRole="OrderProduct" />
           <NavigationProperty Name="Unit" Relationship="C.FK_Product_Unit" FromRole="Product" ToRole="Unit" />
           <NavigationProperty Name="Specification" Relationship="C.FK_Specification_Product" FromRole="Product" ToRole="Specification" />
@@ -449,24 +427,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Manufacturer_Material">
+        <Association Name="FK_Manufacturer_Material1">
           <End Type="C.Material" Role="Material" Multiplicity="1" />
           <End Type="C.Manufacturer" Role="Manufacturer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Material">
               <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Manufacturer">
-              <PropertyRef Name="ItemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Manufacturer_Product">
-          <End Type="C.Product" Role="Product" Multiplicity="1" />
-          <End Type="C.Manufacturer" Role="Manufacturer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Manufacturer">
               <PropertyRef Name="ItemId" />
@@ -569,7 +535,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

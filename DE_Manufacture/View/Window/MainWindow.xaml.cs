@@ -37,12 +37,11 @@ namespace DE_Manufacture.View.Window
 
         private void OrdersPageBtn_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new OrderPage());
+            MainFrame.Navigate(new OrderPaGe());
         }
 
         private void SpecificationsPageBtn_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new SpecifucationPage());
         }
 
         private void MainFrame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
